@@ -3,7 +3,7 @@
 describe('Directive: activityFeed', function () {
 
   // load the directive's module
-  beforeEach(module('fieldDbactivityFeedApp'));
+  beforeEach(module('fieldDBActivityFeedApp'));
 
   var element,
     scope;
