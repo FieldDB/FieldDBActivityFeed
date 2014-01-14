@@ -1,0 +1,32 @@
+{
+  "name": "fielddb-glosser",
+  "version": "1.82.1",
+  "authors": [
+    "info@fielddb.org"
+  ],
+  "description": "A semi-automatic IGT morpheme segmenter and glosser",
+  "main": "dist/fielddb-glosser.min.js",
+  "keywords": [
+    "igt",
+    "leipzig",
+    "conventions",
+    "linguistics"
+  ],
+  "license": "Apache 2.0",
+  "homepage": "https://github.com/OpenSourceFieldlinguistics/FieldDB/issues/milestones?state=closed",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "lib",
+    "dist",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "d3": "~3.3.10",
+    "underscore": "~1.5.2"
+  }
+}
