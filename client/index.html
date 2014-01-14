@@ -24,7 +24,10 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container" ng-view="">
+        <activity-feed></activity-feed>
+
+    </div>
 
 
     <!--[if lt IE 9]>
@@ -42,7 +45,11 @@
 
         <!-- build:js({.tmp,client}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="libs/oprime/services/CouchDB.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/filters.js"></script>
+        <script src="scripts/services.js"></script>
+        <script src="scripts/directives/activityfeed.js"></script>
         <!-- endbuild -->
 </body>
 </html>

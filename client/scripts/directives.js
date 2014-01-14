@@ -1,10 +1,12 @@
-var OPrime = OPrime || {};
+'use strict';
 
-  var ActivityFeedDirectives = angular.module('ActivityFeed.directives', [])
-      .directive('appVersion', [ 'version', function(version) {
-        return function(scope, elm, attrs) {
-          elm.text(version);
-        };
-      } ]);
-  
-  console.log("Defining ActivityFeedDirectives.");
+angular.module('fieldDBActivityFeedApp', [])
+	.directive('appVersion', ['version',
+		function(version) {
+			return function(scope, elm) {
+				elm.text(version);
+			};
+		}
+	]);
+
+console.log("Defining ActivityFeedDirectives.");
