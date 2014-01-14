@@ -92,7 +92,7 @@ angular.module('fieldDBActivityFeedApp').directive('activityFeed', ['MostRecentA
 
       link: function postLink(scope, element, attrs, ActivityFeedController) {
         console.log(attrs, ActivityFeedController);
-        element.text('this is the activityFeed directive');
+        // element.text('this is the activityFeed directive');
       }
     };
   }

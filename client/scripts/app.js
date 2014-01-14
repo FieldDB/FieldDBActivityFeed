@@ -18,6 +18,6 @@ angular.module('fieldDBActivityFeedApp', [
       controller: 'MainCtrl'
     })
     .otherwise({
-      redirectTo: '/user/:username/corpus/:corpusid'
+      redirectTo: '/user/lingllama/corpus/communitycorpus'
     });
 });
