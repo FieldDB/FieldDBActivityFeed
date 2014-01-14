@@ -1,7 +1,4 @@
-'use strict';
-define(
-    [ "angular", "OPrime", "libs/oprime/services/CouchDB" ],
-    function(angular, OPrime, CouchDBServices) {
+var OPrime = OPrime || {};
 
       console.log("Loading Activity.services");
 
@@ -21,7 +18,7 @@ define(
               function($http) {
                 return {
                   'async' : function(params) {
-                    OPrime.debug("Fetching this activity feed: ", params);
+                    console.log("Fetching this activity feed: ", params);
                     var location = OPrime.couchURL();
                     var promise = $http(
                         {
@@ -38,7 +35,7 @@ define(
                           withCredentials : true
                         }).then(function(response) {
                       // + JSON.stringify(response));
-                      // OPrime.debug("response", response);
+                      // console.log("response", response);
                       var results = [];
                       for ( var i = 0; i < response.data.rows.length; i++) {
                         results.push(response.data.rows[i].value);
@@ -53,7 +50,7 @@ define(
               function($http) {
                 return {
                   'async' : function(params) {
-                    OPrime.debug("Fetching this activity feed: ", params);
+                    console.log("Fetching this activity feed: ", params);
                     var location = OPrime.couchURL();
                     var promise = $http(
                         {
@@ -70,7 +67,7 @@ define(
                           withCredentials : true
                         }).then(function(response) {
                       // + JSON.stringify(response));
-                      // OPrime.debug("response", response);
+                      // console.log("response", response);
                       return response.data;
                     });
                     return promise;
@@ -81,7 +78,7 @@ define(
               function($http) {
                 return {
                   'async' : function(params) {
-                    OPrime.debug("Fetching this activity feed: ", params);
+                    console.log("Fetching this activity feed: ", params);
                     var location = OPrime.couchURL();
                     var promise = $http(
                         {
@@ -97,7 +94,7 @@ define(
                           withCredentials : true
                         }).then(function(response) {
                       // + JSON.stringify(response));
-                      // OPrime.debug("response", response);
+                      // console.log("response", response);
                       
                       return response.data;
                     });
@@ -106,6 +103,4 @@ define(
                 };
               });
 
-      return ActivityFeedServices;
 
-    });

@@ -1,5 +1,5 @@
 if (OPrime) {
-  OPrime.debug("Loading AuthenticationServices");
+  console.log("Loading AuthenticationServices");
 } else {
   console.log("Loading AuthenticationServices");
 }

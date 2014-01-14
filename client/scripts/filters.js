@@ -1,7 +1,4 @@
-'use strict';
-define([ "angular", "OPrime" ], function(angular, OPrime) {
-
-  /* Filters */
+var OPrime = OPrime || {};
 
   var ActivityFeedFilters = angular.module('ActivityFeed.filters', []).filter(
       'interpolate', [ 'version', function(version) {
@@ -17,7 +14,5 @@ define([ "angular", "OPrime" ], function(angular, OPrime) {
         };
       });
 
-  OPrime.debug("Defining ActivityFeedFilters.");
+  console.log("Defining ActivityFeedFilters.");
 
-  return ActivityFeedFilters;
-});

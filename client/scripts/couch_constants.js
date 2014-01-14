@@ -1,4 +1,4 @@
-OPrime = OPrime || {};
+var OPrime = OPrime || {};
 OPrime.couchURL = function() {
   var corpusURL = window.location.origin;
   var couchConnection = {

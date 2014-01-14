@@ -43,17 +43,17 @@ define(
           .factory(
               'GetSessionToken',
               function($http) {
-                OPrime.debug("Contacting the DB to log user in.");
+                console.log("Contacting the DB to log user in.");
                 if (!OPrime.useUnsecureCouchDB()) {
                   return {
                     'run' : function(dataToPost) {
-                      OPrime.debug("Getting session token.");
+                      console.log("Getting session token.");
                       var couchInfo = OPrime.couchURL();
                       var promise = $http.get(
                           couchInfo.protocol + couchInfo.domain
                               + couchInfo.port + '/_session', dataToPost).then(
                           function(response, data, status, headers, config) {
-                            OPrime.debug("Session token set, probably",
+                            console.log("Session token set, probably",
                                 response);
                             return response;
                           });
@@ -70,7 +70,7 @@ define(
                           couchInfo.protocol + couchInfo.domain
                               + couchInfo.port + '', dataToPost).then(
                           function(response, data, status, headers, config) {
-                            OPrime.debug("Faking Session token set");
+                            console.log("Faking Session token set");
                             return response;
                           });
                       return promise;

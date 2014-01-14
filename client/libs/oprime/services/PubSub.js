@@ -1,5 +1,5 @@
 if(OPrime){
-  OPrime.debug("Loading OPrime.services");
+  console.log("Loading OPrime.services");
 }else{
   console.log("Loading  OPrime.services");
 }

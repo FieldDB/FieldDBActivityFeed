@@ -1,6 +1,4 @@
-'use strict';
-define([ "angular", "OPrime" ], function(angular, OPrime) {
-  /* Directives */
+var OPrime = OPrime || {};
 
   var ActivityFeedDirectives = angular.module('ActivityFeed.directives', [])
       .directive('appVersion', [ 'version', function(version) {
@@ -9,7 +7,4 @@ define([ "angular", "OPrime" ], function(angular, OPrime) {
         };
       } ]);
   
-  OPrime.debug("Defining ActivityFeedDirectives.");
-
-  return ActivityFeedDirectives;
-});
+  console.log("Defining ActivityFeedDirectives.");
