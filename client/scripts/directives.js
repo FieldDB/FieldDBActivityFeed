@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fieldDBActivityFeedApp', [])
+angular.module('fieldDBActivityFeedApp')
 	.directive('appVersion', ['version',
 		function(version) {
 			return function(scope, elm) {

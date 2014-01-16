@@ -12,7 +12,7 @@ console.log("Loading ActivityServices");
  * if they check it, either add the publicuser to the activity feed
  * database security
  */
-angular.module('fieldDBActivityFeedApp', ['ngResource'])
+angular.module('fieldDBActivityFeedApp')
   .value('version', '0.1')
   .factory(
     'MostRecentActivities',
