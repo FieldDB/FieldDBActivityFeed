@@ -1,4 +1,11 @@
-function generateFeedTable(user) {
+'use strict';
+
+angular.module('fielddbActivityHeatmap', []).directive('fielddbActivityHeatmap', function() {
+
+  var heatmap = {};
+  heatmap.colors = [];
+  heatmap.granularity = "week";
+
   Date.prototype.getWeek = function(dowOffset) {
     dowOffset = typeof(dowOffset) == 'int' ? dowOffset : 0;
     var newYear = new Date(this.getFullYear(), 0, 1);
@@ -22,9 +29,9 @@ function generateFeedTable(user) {
   };
 
   var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-  // var data = {"rows":[{"key":{"action":"added","week":50},"value":77},{"key":{"action":"added","week":21},"value":1},{"key":{"action":"added","week":22},"value":1},{"key":{"action":"attempted","week":12},"value":1},{"key":{"action":"commented","week":12},"value":21},{"key":{"action":"downloaded","week":4},"value":6},{"key":{"action":"imported","week":12},"value":31},{"key":{"action":"modified","week":26},"value":7},{"key":{"action":"updated","week":4},"value":10},{"key":{"action":"updated","week":12},"value":13},{"key":{"action":"updated","week":21},"value":51},{"key":{"action":"updated","week":22},"value":1},{"key":{"action":"updated","week":26},"value":64},{"key":{"action":"uploaded","week":4},"value":3}]};
-
-  $.ajax({url: '/activity/' + user, method: 'GET', success: function(data) {
+  var sampleData = {"rows":[{"key":{"action":"added","week":50},"value":77},{"key":{"action":"added","week":21},"value":1},{"key":{"action":"added","week":22},"value":1},{"key":{"action":"attempted","week":12},"value":1},{"key":{"action":"commented","week":12},"value":21},{"key":{"action":"downloaded","week":4},"value":6},{"key":{"action":"imported","week":12},"value":31},{"key":{"action":"modified","week":26},"value":7},{"key":{"action":"updated","week":4},"value":10},{"key":{"action":"updated","week":12},"value":13},{"key":{"action":"updated","week":21},"value":51},{"key":{"action":"updated","week":22},"value":1},{"key":{"action":"updated","week":26},"value":64},{"key":{"action":"uploaded","week":4},"value":3}]};
+  
+  var generateHeatMap = function generateHeatMap(data) {
     var matrix = {};
     var weeknow = new Date().getWeek();
 
@@ -85,12 +92,24 @@ function generateFeedTable(user) {
     }
 
     s += '</table>';
-    $('body').append(s);
-  }});
+    return s;
+  };
 
-}
 
-$(document).ready(function() {
-  var database = window.location.search.replace('?', '');
-  generateFeedTable(database);
+
+  return {
+    template: 'heatmap',
+    restrict: 'A',
+    transclude: true,
+    scope: true,
+    controller: function($scope, $element, $attrs, $transclude) {},
+
+    link: function postLink(scope, element, attrs) {
+      scope.heatmap = heatmap;
+      var html = generateHeatMap(sampleData);
+      element.html(html);
+      // console.log(attrs);
+      // element.text('this is the heatmap directive');
+    }
+  };
 });
