@@ -87,7 +87,7 @@ angular.module('fieldDBActivityFeedApp').directive('activityFeed', ['MostRecentA
       // template: '<div></div>',
       templateUrl: 'views/activity-feed.html',
       // replace: true,
-      // transclude: true,
+      // transclude: false,
       // compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 
       link: function postLink(scope, element, attrs, ActivityFeedController) {
