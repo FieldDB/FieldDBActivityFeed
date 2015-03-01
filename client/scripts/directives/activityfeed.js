@@ -4,7 +4,7 @@ var OPrime = OPrime || {};
 angular.module('fieldDBActivityFeedApp').directive('activityFeed', ['MostRecentActivities', 'UserDetails', 'CorpusDetails',
   function(MostRecentActivities, UserDetails, CorpusDetails) {
     // Runs during compile
-    console.log();
+    console.log( UserDetails, CorpusDetails);
     return {
       // name: '',
       // priority: 1,

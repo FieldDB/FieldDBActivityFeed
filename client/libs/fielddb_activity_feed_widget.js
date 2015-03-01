@@ -11462,19 +11462,19 @@ function checkboxInputType(scope, element, attr, ctrl) {
            User name: <input type="text" name="userName" ng-model="user.name" required>
            <span class="error" ng-show="myForm.userName.$error.required">
              Required!</span><br>
-           Last name: <input type="text" name="lastName" ng-model="user.last"
+           Last name: <input type="text" name="lastname" ng-model="user.last"
              ng-minlength="3" ng-maxlength="10">
-           <span class="error" ng-show="myForm.lastName.$error.minlength">
+           <span class="error" ng-show="myForm.lastname.$error.minlength">
              Too short!</span>
-           <span class="error" ng-show="myForm.lastName.$error.maxlength">
+           <span class="error" ng-show="myForm.lastname.$error.maxlength">
              Too long!</span><br>
          </form>
          <hr>
          <tt>user = {{user}}</tt><br/>
          <tt>myForm.userName.$valid = {{myForm.userName.$valid}}</tt><br>
          <tt>myForm.userName.$error = {{myForm.userName.$error}}</tt><br>
-         <tt>myForm.lastName.$valid = {{myForm.lastName.$valid}}</tt><br>
-         <tt>myForm.userName.$error = {{myForm.lastName.$error}}</tt><br>
+         <tt>myForm.lastname.$valid = {{myForm.lastname.$valid}}</tt><br>
+         <tt>myForm.userName.$error = {{myForm.lastname.$error}}</tt><br>
          <tt>myForm.$valid = {{myForm.$valid}}</tt><br>
          <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br>
          <tt>myForm.$error.minlength = {{!!myForm.$error.minlength}}</tt><br>
@@ -11498,15 +11498,15 @@ function checkboxInputType(scope, element, attr, ctrl) {
         it('should be valid if empty when min length is set', function() {
           input('user.last').enter('');
           expect(binding('user')).toEqual('{"name":"guest","last":""}');
-          expect(binding('myForm.lastName.$valid')).toEqual('true');
+          expect(binding('myForm.lastname.$valid')).toEqual('true');
           expect(binding('myForm.$valid')).toEqual('true');
         });
 
         it('should be invalid if less than required min length', function() {
           input('user.last').enter('xx');
           expect(binding('user')).toEqual('{"name":"guest"}');
-          expect(binding('myForm.lastName.$valid')).toEqual('false');
-          expect(binding('myForm.lastName.$error')).toMatch(/minlength/);
+          expect(binding('myForm.lastname.$valid')).toEqual('false');
+          expect(binding('myForm.lastname.$error')).toMatch(/minlength/);
           expect(binding('myForm.$valid')).toEqual('false');
         });
 
@@ -11514,8 +11514,8 @@ function checkboxInputType(scope, element, attr, ctrl) {
           input('user.last').enter('some ridiculously long name');
           expect(binding('user'))
             .toEqual('{"name":"guest"}');
-          expect(binding('myForm.lastName.$valid')).toEqual('false');
-          expect(binding('myForm.lastName.$error')).toMatch(/maxlength/);
+          expect(binding('myForm.lastname.$valid')).toEqual('false');
+          expect(binding('myForm.lastname.$error')).toMatch(/maxlength/);
           expect(binding('myForm.$valid')).toEqual('false');
         });
       </doc:scenario>

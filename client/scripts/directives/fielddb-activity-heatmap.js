@@ -7,13 +7,13 @@ angular.module('fielddbActivityHeatmap', []).directive('fielddbActivityHeatmap',
   heatmap.granularity = "week";
 
   Date.prototype.getWeek = function(dowOffset) {
-    dowOffset = typeof(dowOffset) == 'int' ? dowOffset : 0;
+    dowOffset = typeof(dowOffset) === 'number' ? dowOffset : 0;
     var newYear = new Date(this.getFullYear(), 0, 1);
     var day = newYear.getDay() - dowOffset;
     day = (day >= 0 ? day : day + 7);
     var daynum = Math.floor((this.getTime() - newYear.getTime() -
       (this.getTimezoneOffset() - newYear.getTimezoneOffset()) * 60000) / 86400000) + 1;
-    var weeknum;
+    var weeknum, nYear, nday;
     if (day < 4) {
       weeknum = Math.floor((daynum + day - 1) / 7) + 1;
       if (weeknum > 52) {
@@ -33,6 +33,7 @@ angular.module('fielddbActivityHeatmap', []).directive('fielddbActivityHeatmap',
 
   var generateHeatMap = function generateHeatMap(data) {
     var matrix = {};
+    var i;
     var weeknow = new Date().getWeek();
 
     for (var row in data.rows) {
@@ -51,7 +52,7 @@ angular.module('fielddbActivityHeatmap', []).directive('fielddbActivityHeatmap',
 
     // Set up the 53 data columns
     s += '<col style="width:80px !important">';
-    for (var i = 1; i < 53; i++) {
+    for (i = 1; i < 53; i++) {
       s += '<col style="width:1.1em !important">';
     }
 
@@ -59,7 +60,7 @@ angular.module('fielddbActivityHeatmap', []).directive('fielddbActivityHeatmap',
     // 2627994240 = appx 1 month in milliseconds
     s += '<tr><td>';
     var now = new Date();
-    for (var i = 11; i >= 0; i--) {
+    for (i = 11; i >= 0; i--) {
       if (i % 3 === 0) {
         s += '<td colspan=5 style="text-align:right !important">';
       } else {
@@ -73,7 +74,7 @@ angular.module('fielddbActivityHeatmap', []).directive('fielddbActivityHeatmap',
     // Darker = more transactions.
     for (var verb in matrix) {
       s += '<tr><td style="text-align:right !important;height:1em !important">' + verb;
-      for (var i = 1; i < 53; i++) {
+      for (i = 1; i < 53; i++) {
         if (matrix[verb][i] === undefined) {
           s += '<td style="background:whitesmoke !important;height:1em !important">';
         } else {
@@ -102,9 +103,8 @@ angular.module('fielddbActivityHeatmap', []).directive('fielddbActivityHeatmap',
     restrict: 'A',
     transclude: false,
     scope: true,
-    controller: function($scope, $element, $attrs, $transclude) {},
-
-    link: function postLink(scope, element, attrs) {
+    controller: function() {},
+    link: function postLink(scope, element) {
       scope.heatmap = heatmap;
       var html = generateHeatMap(sampleData);
       element.html(html);
